@@ -1,8 +1,8 @@
 //TODO: Keep it blind accessible
 //TODO: use propTypes to solidify json format
+//TODO: Approve button should warn if asked amount exceeds budget in json
 
 import React from "react";
-//import logo from "./logo.svg";
 import "./App.css";
 
 import json_data from "./request_data.json";
@@ -19,17 +19,17 @@ function Security() {
   return <div className="border0">Security0</div>;
 }
 
-function BoxHeading() {
-  return <div className="border0">BoxHeading0</div>;
+function MainBoxHeading() {
+  return <div className="border0">MainBoxHeading0</div>;
 }
 
-function LeftBox() {
-  return <div className="border0">LeftBox</div>;
+function RequesterBox() {
+  return <div className="border0">RequesterBox</div>;
 }
 
-function RightBox({ approvers }) {
+function ApproverBox({ approvers }) {
   console.log(approvers);
-  return <div className="border0">RightBox</div>;
+  return <div className="border0">ApproverBox</div>;
 }
 
 function ApproveDeny() {
@@ -40,9 +40,9 @@ function MainBox({ json_data }) {
   console.log(json_data);
   return (
     <div className="border0">
-      <BoxHeading />
-      <LeftBox />
-      <RightBox approvers={json_data.approvers} />
+      <MainBoxHeading />
+      <RequesterBox />
+      <ApproverBox approvers={json_data.approvers} />
       <ApproveDeny />
     </div>
   );
@@ -51,20 +51,6 @@ function MainBox({ json_data }) {
 function App() {
   return (
     <div className="App">
-      {/*<header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-	  </header>*/}
       <Logo />
       <Security />
       <MainBox json_data={json_data} />

@@ -1,6 +1,9 @@
 //TODO: Keep it blind accessible
-//TODO: use propTypes to solidify json format
+//TODO: use propTypes to solidify json format, requires npm i prop-types
 //TODO: Approve button should warn if asked amount exceeds budget in json
+//TODO: diagram 1: component names drawn on top of the design diagram
+//TODO: diagram 2: which component owns which piece of json data
+//TODO: include a library that shows logo of attached files, eg: .xls logo in design doc
 
 import React from "react";
 import "./App.css";
@@ -38,11 +41,13 @@ function ApproveDeny() {
 
 function MainBox({ json_data }) {
   console.log(json_data);
+  let {approvers, ...remaining_json_data} = json_data;
+  
   return (
     <div className="border0">
       <MainBoxHeading />
       <RequesterBox />
-      <ApproverBox approvers={json_data.approvers} />
+      <ApproverBox approvers={approvers} />
       <ApproveDeny />
     </div>
   );

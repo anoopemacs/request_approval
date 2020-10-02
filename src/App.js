@@ -74,7 +74,7 @@ function RequesterBox({ requested_by, renewal_frequency_in_months, description, 
 function ApproversApproved({approvers_accepted}) {
   return (
     <>
-      <br/><b>Approved</b>
+      <br/>Approved
       {JSON.stringify(approvers_accepted)}
     </>
   );
@@ -82,7 +82,7 @@ function ApproversApproved({approvers_accepted}) {
 function ApproversPending({approvers_pending}) {
   return (
     <>
-      <br/><b>Pending</b>
+      <br/>Pending
       {JSON.stringify(approvers_pending)}
     </>
   );

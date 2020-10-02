@@ -17,3 +17,29 @@ body {
 .border0 {
     border: solid 1px;
 }
+
+.RequesterBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 48px 41px 41px 45px 44px 72px;
+}
+
+.RequesterBox-name {
+    grid-column: 1 / -1;
+}
+.RequesterBox-cost {
+    grid-column: 1 / -1;
+}
+.RequesterBox-freq {
+}
+.RequesterBox-annual {
+}
+.RequesterBox-account {
+    grid-column: 1 / -1;
+}
+.RequesterBox-file {
+    grid-column: 1 / -1;
+}
+.RequesterBox-description {
+    grid-column: 1 / -1;
+}

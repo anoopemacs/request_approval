@@ -52,23 +52,41 @@ function MainBoxHeading({ service, id }) {
   );
 }
 
+function RequesterBoxItem({ item_name,  }) {
+  return (
+    <div>
+      
+    </div>
+  );  
+}
+
 function RequesterBox({ requested_by, renewal_frequency_in_months, description, expense_account, cost, files, service }) {
   return (
-    <div className="border0">
+    <>
       <b>RequesterBox</b><br/>
-      Requested by: {JSON.stringify(requested_by)}
-      <hr/>
-      Cost: {cost}
-      <hr/>
-      Renewal Frequency: {renewal_frequency_in_months} months
-      Annual Cost: ${cost * 12}
-      <hr/>
-      Expense Account: {expense_account}
-      <hr/>
-      File: {JSON.stringify(files)}
-      <hr/>
-      Description: {description}
-      <hr/>
+      <div className="RequesterBox border0">
+	<div className="RequesterBox-name">
+	  Requested by: {JSON.stringify(requested_by)}
+	</div>
+	<div className="RequesterBox-cost">
+	  Cost: {cost}
+	</div>
+	<div className="RequesterBox-freq">
+	  Renewal Frequency: {renewal_frequency_in_months} months
+	</div>
+	<div className="RequesterBox-annual">
+	  Annual Cost: ${cost * 12}
+	</div>
+	<div className="RequesterBox-account">
+	  Expense Account: {expense_account}
+	</div>
+	<div className="RequesterBox-file">
+	  File: {JSON.stringify(files)}
+	</div>
+	<div className="RequesterBox-description">
+	  Description: {description}
+	</div>
+      </div>
       {(service.usage_count > 0)?
        <div>
 	 <span>Your company is already paying for {service.name} on a recurring basis.</span><br/>
@@ -76,7 +94,7 @@ function RequesterBox({ requested_by, renewal_frequency_in_months, description, 
        </div>
       :
        ""}
-    </div>
+    </>
   );
 }
 

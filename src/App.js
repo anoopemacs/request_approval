@@ -13,6 +13,8 @@
 //TODO: month v/s months v/s year v/s years
 //TODO: Approve should warn if request exceeds monthly spend limit
 //TODO: Security 'lock logo' add from external library, fontawesome?
+//TODO: convert requester box to <table>
+//TODO: test on Internet explorer, Edge, other operating systems on Browserstack
 import React from "react";
 import "./App.css";
 
@@ -20,7 +22,7 @@ import json_data from "./request_data.json";
 
 function AirbaseLogo() {
   return (
-    <div className="border0" alt="airbase logo">
+    <div className="AirbaseLogo border0" alt="airbase logo">
       logo0 airbase
     </div>
   );
@@ -29,14 +31,14 @@ function AirbaseLogo() {
 function Security() {
   return (
     <div className="border0">
-      {"Security logo " + "Security Message" + " message?"}
+      {"Security logo: Security Message, message?"}
     </div>
   );
 }
 
 function MainBoxHeading({ service, id }) {
   return (
-    <div className="border0">
+    <div className="MainBoxHeading border0">
       <b>MainBoxHeading</b>
       <br/>
       <div className="MainBoxHeading-image">
@@ -81,16 +83,18 @@ function RequesterBox({ requested_by, renewal_frequency_in_months, description, 
 function ApproversApproved({approvers_accepted}) {
   return (
     <>
-      <br/>Approved
-      {JSON.stringify(approvers_accepted)}
+      <br/>Approved:<br/>
+      {approvers_accepted.map(approver => approver.approver.first_name)}
+      {/* {JSON.stringify(approvers_accepted)} */}
     </>
   );
 }
 function ApproversPending({approvers_pending}) {
   return (
     <>
-      <br/>Pending
-      {JSON.stringify(approvers_pending)}
+      <br/>Pending:<br/>
+      {approvers_pending.map(approver => approver.approver.first_name)}
+      {/* {JSON.stringify(approvers_pending)} */}
     </>
   );
 }

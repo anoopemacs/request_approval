@@ -1,3 +1,19 @@
+html {
+    background-color: #F9FAFB;
+}
+
+body {
+    margin: 10;
+}
+
+.App {
+    text-align: left;
+    max-width: 851px;
+    margin: auto;
+    overflow-wrap: break-word;
+    border: solid 2px red;/* for debugging purposes only */
+}
+
 .border0 {
     border: solid 1px;
 }

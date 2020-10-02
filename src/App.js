@@ -6,7 +6,12 @@
 //TODO: include a library that shows logo of attached files, eg: .xls logo in design doc
 //TODO: if approvers_accepted + approvers_pending != approvers, then raise an unhandled approver_status exception.
 //TODO: mention npm, React version in readme
-
+//TODO: a picture showning the assumptions made by me
+//TODO: test for the case of 0 pending approvers or 0 approved approvers
+//TODO: change all unnecessary 'let' to 'const'
+//TODO: change formatting of ({approvers_accepted}) to ({ approvers_accepted }) & other such formatting best practises
+//TODO: month v/s months v/s year v/s years
+//TODO: Approve should warn if request exceeds monthly spend limit
 import React from "react";
 import "./App.css";
 
@@ -28,10 +33,23 @@ function MainBoxHeading() {
   return <div className="border0">MainBoxHeading0</div>;
 }
 
-function RequesterBox() {
+function RequesterBox({ requested_by, renewal_frequency_in_months, description, expense_account, cost, files }) {
   return (
     <div className="border0">
-      RequesterBox<br/>
+      <b>RequesterBox</b><br/>
+      Requested by: {JSON.stringify(requested_by)}
+      <hr/>
+      Cost: {cost}
+      <hr/>
+      Renewal Frequency: {renewal_frequency_in_months} months
+      Annual Cost: ${cost * 12}
+      <hr/>
+      Expense Account: {expense_account}
+      <hr/>
+      File: {JSON.stringify(files)}
+      <hr/>
+      Description: {description}
+      <hr/>
     </div>
   );
 }
@@ -68,17 +86,24 @@ function ApproverBox({ approvers }) {
 }
 
 function ApproveDeny() {
-  return <div>Approve0, Deny0</div>;
+  return (
+    <div>
+      <button>Approve</button>
+      <button>Deny</button>
+    </div>
+  );
 }
 
 function MainBox({ json_data }) {
   console.log("json_data", json_data);
-  let {approvers, ...remaining_json_data} = json_data;
+  const {approvers, ...remaining_json_data} = json_data;
+  //requester_data:-
+  const {requested_by, renewal_frequency_in_months, description, expense_account, cost, files, ...remaining2_json_data} = remaining_json_data;
   
   return (
     <div className="border0">
       <MainBoxHeading />
-      <RequesterBox />
+      <RequesterBox requested_by = {requested_by} renewal_frequency_in_months = {renewal_frequency_in_months} description = {description} expense_account = {expense_account}  cost = {cost}  files = {files} />
       <ApproverBox approvers={approvers} />
       <ApproveDeny />
     </div>

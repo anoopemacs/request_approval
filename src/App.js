@@ -29,8 +29,14 @@ function Security() {
   return <div className="border0">Security0</div>;
 }
 
-function MainBoxHeading() {
-  return <div className="border0">MainBoxHeading0</div>;
+function MainBoxHeading({ service, id }) {
+  return (
+    <div className="border0">
+      <b>MainBoxHeading</b>
+      <br/>
+      {service.logo}{" Request for "}{service.name}{" (#"+ id + ")"}
+    </div>
+  );
 }
 
 function RequesterBox({ requested_by, renewal_frequency_in_months, description, expense_account, cost, files }) {
@@ -99,10 +105,12 @@ function MainBox({ json_data }) {
   const {approvers, ...remaining_json_data} = json_data;
   //requester_data:-
   const {requested_by, renewal_frequency_in_months, description, expense_account, cost, files, ...remaining2_json_data} = remaining_json_data;
+  //MainBoxHeading data:-
+  const {service, id, ...remaining3_json_data} = remaining2_json_data;
   
   return (
     <div className="border0">
-      <MainBoxHeading />
+      <MainBoxHeading service={service} id={id} />
       <RequesterBox requested_by = {requested_by} renewal_frequency_in_months = {renewal_frequency_in_months} description = {description} expense_account = {expense_account}  cost = {cost}  files = {files} />
       <ApproverBox approvers={approvers} />
       <ApproveDeny />

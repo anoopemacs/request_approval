@@ -50,7 +50,7 @@ function MainBoxHeading({ service, id }) {
   );
 }
 
-function RequesterBox({ requested_by, renewal_frequency_in_months, description, expense_account, cost, files }) {
+function RequesterBox({ requested_by, renewal_frequency_in_months, description, expense_account, cost, files, service }) {
   return (
     <div className="border0">
       <b>RequesterBox</b><br/>
@@ -67,6 +67,13 @@ function RequesterBox({ requested_by, renewal_frequency_in_months, description, 
       <hr/>
       Description: {description}
       <hr/>
+      {(service.usage_count > 0)?
+       <div>
+	 <span>Your company is already paying for {service.name} on a recurring basis.</span><br/>
+	 <span>({service.usage_count} {service.usage_count === 1? "instance": "instances"} owned by ?)</span>
+       </div>
+      :
+       ""}
     </div>
   );
 }
@@ -122,7 +129,7 @@ function MainBox({ json_data }) {
   return (
     <div className="border0">
       <MainBoxHeading service={service} id={id} />
-      <RequesterBox requested_by = {requested_by} renewal_frequency_in_months = {renewal_frequency_in_months} description = {description} expense_account = {expense_account}  cost = {cost}  files = {files} />
+      <RequesterBox requested_by = {requested_by} renewal_frequency_in_months = {renewal_frequency_in_months} description = {description} expense_account = {expense_account}  cost = {cost}  files = {files} service={service} />
       <ApproverBox approvers={approvers} />
       <ApproveDeny />
     </div>

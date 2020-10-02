@@ -17,10 +17,10 @@ import "./App.css";
 
 import json_data from "./request_data.json";
 
-function Logo() {
+function AirbaseLogo() {
   return (
     <div className="border0" alt="airbase logo">
-      airbase
+      airbase logo0
     </div>
   );
 }
@@ -83,7 +83,7 @@ function ApproverBox({ approvers }) {
   const approvers_pending = approvers.filter(approver => approver.status === "created");
   return (
     <div className="border0">
-      ApproverBox
+      <b>ApproverBox</b>
       <ApproversApproved approvers_accepted={approvers_accepted}/>
       <ApproversPending approvers_pending={approvers_pending}/>
     </div>
@@ -121,7 +121,7 @@ function MainBox({ json_data }) {
 function App() {
   return (
     <div className="App">
-      <Logo />
+      <AirbaseLogo />
       <Security />
       <MainBox json_data={json_data} />
     </div>

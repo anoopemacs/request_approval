@@ -12,6 +12,7 @@
 //TODO: change formatting of ({approvers_accepted}) to ({ approvers_accepted }) & other such formatting best practises
 //TODO: month v/s months v/s year v/s years
 //TODO: Approve should warn if request exceeds monthly spend limit
+//TODO: Security 'lock logo' add from external library, fontawesome?
 import React from "react";
 import "./App.css";
 
@@ -20,13 +21,17 @@ import json_data from "./request_data.json";
 function AirbaseLogo() {
   return (
     <div className="border0" alt="airbase logo">
-      airbase logo0
+      logo0 airbase
     </div>
   );
 }
 
 function Security() {
-  return <div className="border0">Security0</div>;
+  return (
+    <div className="border0">
+      {"Security logo " + "Security Message" + " message?"}
+    </div>
+  );
 }
 
 function MainBoxHeading({ service, id }) {
@@ -34,7 +39,13 @@ function MainBoxHeading({ service, id }) {
     <div className="border0">
       <b>MainBoxHeading</b>
       <br/>
-      {service.logo}{" Request for "}{service.name}{" (#"+ id + ")"}
+      <div className="MainBoxHeading-image">
+	<img 
+	  src={service.logo}
+	  alt={service.name + " logo"}
+	/>
+      </div>
+      {`Request for ${service.name} (#${id})`}
     </div>
   );
 }

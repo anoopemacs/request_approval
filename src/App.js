@@ -24,6 +24,7 @@
 //TODO: underscore vs camelcase follow convention & add it to readme
 //TODO: single quote, double quote formatting
 //TOOD: should I replace date formatter with moment.js?
+//TOread: /* display: inline-block what specifically does this do?  how does it enable empty circle to not disappear*/
 import React from "react";
 import "./App.css";
 
@@ -157,8 +158,11 @@ function ApproversApproved({ approvers_approved, list_heading }) {
 		     <span>{`Approved ${format_date_string(approver.last_updated_date)}`}</span> :
 		     <span>{`Last notified ${format_date_string(approver.last_notified_time)}`}</span>;
 
+    const pending_duration_in_weeks = (list_heading === "Approved")? "" : "6";
+
     return (
       <div key={approver.approver.email}>
+	<span className="Approvers-list-timecircle">{pending_duration_in_weeks}</span>
 	<span>{`${approver.approver.first_name} ${approver.approver.last_name} (${approver.approver.email})`}</span>
 	{date_jsx}
       </div>

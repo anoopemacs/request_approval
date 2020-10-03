@@ -14,11 +14,11 @@ body {
 }
 
 .border0 {
-    border: solid 1px;
+    //border: dashed 1px pink;
 }
 
 .MainBox {
-    background-color: red;/*rgba(34, 34, 34, 0.05);*/
+    background-color: rgba(34, 34, 34, 0.05);
     display:grid;
     grid-gap: 1px;
     grid-template-columns: 504px 346px;
@@ -106,21 +106,33 @@ body {
 }
 
 /*
-.ApproveDeny-approve .ApproveDeny-deny {
-    position: absolute;
-    height: 17px;
-    left: 19.05%;
-    right: 20.24%;
-    top: calc(50% - 17px/2 + 0.5px);
+   .ApproveDeny-approve .ApproveDeny-deny {
+   position: absolute;
+   height: 17px;
+   left: 19.05%;
+   right: 20.24%;
+   top: calc(50% - 17px/2 + 0.5px);
 
-    font-family: SFProDisplay;
-    font-size: 14px;
-    line-height: 16px;
-    //identical to box height
+   font-family: SFProDisplay;
+   font-size: 14px;
+   line-height: 16px;
+   //identical to box height
 
-    color: #FFFFFF;
-}
-*/
+   color: #FFFFFF;
+   }
+ */
 .multiusewarning {
     margin-left: 15px; /*16px on mobile*/
+}
+.Approvers-list-timecircle {
+    width:20px;
+    height:20px;
+    border-radius:10px;
+    font-size: 12px;
+    color:#222222;
+    line-height: 14px;
+    background: rgba(34, 34, 34, 0.1);
+    text-align: center;
+    opacity: 0.5;
+    display: inline-block;
 }

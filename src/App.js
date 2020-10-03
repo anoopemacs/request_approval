@@ -25,6 +25,7 @@
 //TODO: single quote, double quote formatting
 //TOOD: should I replace date formatter with moment.js?
 //TOread: /* display: inline-block what specifically does this do?  how does it enable empty circle to not disappear*/
+//Assumption made: approvers are presented in the same order as they appear in the array from json data
 import React from "react";
 import { differenceInWeeks } from 'date-fns';
 import parse from 'date-fns/parse';

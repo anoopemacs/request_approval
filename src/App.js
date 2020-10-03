@@ -19,32 +19,38 @@
 //TODO: explain hack used to fill css grid borders
 //TODO: show css calculations more explicitly: top: calc(50% - 17px/2 + 0.5px);
 //TODO: I think in design, drop shadow is only there to the bottom.
-//TODO: ApproversApproved & ApproversPending should not be duplicated
 //TODO: add to assumptions:      "last_updated_date" is the time that Approved signal was sent
 //TODO: underscore vs camelcase follow convention & add it to readme
 //TODO: single quote, double quote formatting
 //TOOD: should I replace date formatter with moment.js?
 //TOread: /* display: inline-block what specifically does this do?  how does it enable empty circle to not disappear*/
 //Assumption made: approvers are presented in the same order as they appear in the array from json data
+//font-family: SFProDisplay;
+//delate default logo bundles by Create react app into public folder
+//retina ready
 import React from "react";
-import { differenceInWeeks } from 'date-fns';
-import parse from 'date-fns/parse';
-
 import "./App.css";
 import json_data from "./request_data.json";
+import tickmark from './images/tickmark.svg';
+import airbaseLogo from './images/airbase-logo.svg';
+import securityLogo from './images/security-logo.svg';
 
 function AirbaseLogo() {
   return (
-    <div className="AirbaseLogo border0" alt="airbase logo">
-      logo0 airbase
+    <div className="AirbaseLogo border0">
+      <img src={airbaseLogo} className="AirbaseLogo-svg" alt="airbase logo" />
     </div>
   );
 }
 
 function Security() {
   return (
-    <div className="border0">
-      {"Security logo: Security Message, message?"}
+    <div className="Security border0">
+      <img className="Security-image"
+	   src={securityLogo}
+	   alt={"secure lock logo"} />
+      <span>Security Message: </span>
+      <span>Could not identify security message from given json.</span>
     </div>
   );
 }
@@ -52,35 +58,25 @@ function Security() {
 function MainBoxHeading({ service, id }) {
   return (
     <div className="MainBoxHeading border0">
-      <b>MainBoxHeading</b>
-      <br/>
-      <div className="MainBoxHeading-image">
-	<img 
-	  src={service.logo}
-	  alt={service.name + " logo"}
-	/>
-      </div>
+      <img className="MainBoxHeading-image"
+	   src={service.logo}
+	   alt={service.name + " logo"}
+      />
       {`Request for ${service.name} (#${id})`}
     </div>
   );
-}
-
-function RequesterBoxItem({ item_name,  }) {
-  return (
-    <div>
-      
-    </div>
-  );  
 }
 
 function RequesterBox({ requested_by, renewal_frequency_in_months, description, expense_account, cost, files, service }) {
   return (
     <div className="RequesterBox border0">
       <div className="RequesterBox-name">
-	Requested by: {JSON.stringify(requested_by)}
+	Requested by:
+	<img className="RequesterBox-profilepicture-image" src={requested_by.profile_picture} alt={requested_by.first_name + " profile picture"} />
+	{`${requested_by.first_name} ${requested_by.last_name}`}
       </div>
       <div className="RequesterBox-cost">
-	Cost: {cost}
+	Cost: ${cost}
       </div>
       <div className="RequesterBox-freq">
 	Renewal Frequency: {renewal_frequency_in_months} {renewal_frequency_in_months > 1 ? "months" : "month"}
@@ -92,7 +88,7 @@ function RequesterBox({ requested_by, renewal_frequency_in_months, description, 
 	Expense Account: {expense_account}
       </div>
       <div className="RequesterBox-file">
-	File: {JSON.stringify(files)}
+	File: {files.map(file_url => file_url.substring(file_url.lastIndexOf('/') + 1))}
       </div>
       <div className="RequesterBox-description">
 	Description: {description}
@@ -117,7 +113,7 @@ function RequesterBoxWithWarningAndButtons({ requested_by, renewal_frequency_in_
   );
 }
 
-function ApproversApproved({ approvers_approved, list_heading }) {
+function ApproversList({ approvers_approved, list_heading, start_index }) {
   /*
      {
      "approver": {
@@ -133,6 +129,7 @@ function ApproversApproved({ approvers_approved, list_heading }) {
      "last_updated_date": "2018-05-07T10:47:03.166711"
      } 
    */
+  //<img src={airbaseLogo} className="AirbaseLogo-svg" alt="airbase logo" />
   const format_date_string = (date_string) => {
     const dd   = date_string.substring(8,10);
     const mmm  = date_string.substring(5,7);
@@ -155,41 +152,43 @@ function ApproversApproved({ approvers_approved, list_heading }) {
     return `${months[mmm]} ${dd}, ${yyyy}`;
   }
 
-  console.log(differenceInWeeks(new Date(2014, 6, 20),
-				new Date(2014, 6, 5)));
-  console.log(new Date());
-  
-  
-  const approvers_accepted_list_jsx = approvers_approved.map(approver => {
-    const date_jsx = (list_heading === "Approved")?
-		     <span>{`Approved ${format_date_string(approver.last_updated_date)}`}</span> :
-		     <span>{`Last notified ${format_date_string(approver.last_notified_time)}`}</span>;
+  const approvers_list_jsx = approvers_approved.map((approver, map_index) => {
+    const approved_listing_predicate = (list_heading === "Approved")
+    const date_jsx = approved_listing_predicate?
+		     <div className="ApproversList-date">{`Approved ${format_date_string(approver.last_updated_date)}`}</div> :
+		     <div className="ApproversList-date">{`Last notified ${format_date_string(approver.last_notified_time)}`}</div>;
 
-    const pending_duration_in_weeks = (list_heading === "Approved")? "" : "99";
+    const unticked_circle = <div className="Approvers-list-circle ApproversList-statuscircle Approvers-list-untickedcircle"><img src={tickmark} className="Approvers-list-tickmark-white" alt="unchecked tickmark" /></div>;
+    const ticked_circle = <div className="Approvers-list-circle ApproversList-statuscircle Approvers-list-tickedcircle"><img src={tickmark} className="Approvers-list-tickmark-green" alt="checked tickmark" /></div>;
 
+    const approver_fullname = `${approver.approver.first_name} ${approver.approver.last_name}`
+    const approver_fullname_display = (approver_fullname.length <= 14)?
+				      approver_fullname : approver_fullname.substring(0, 12) + "..";
+    
+    const approver_email_display = (approver.approver.email.length <= 28)?
+				      approver.approver.email : approver.approver.email.substring(0, 26) + "..";
+    
     return (
-      <div key={approver.approver.email}>
-	<span className="Approvers-list-timecircle">{pending_duration_in_weeks}</span>
-	<span>{`${approver.approver.first_name} ${approver.approver.last_name} (${approver.approver.email})`}</span>
+      <div className="Approvers-list-item" key={approver.approver.email}>
+	<div className="Approvers-list-circle Approvers-list-indexcircle">{start_index + map_index}</div>
+	<div className="ApproversList-profilepicture">
+	  <img className="ApproversList-profilepicture-image" src={approver.approver.profile_picture} alt={approver.approver.first_name + " profile picture"} />
+	</div>
+	<div className="ApproversList-name-email">
+	  <span className="ApproversList-fullname">{`${approver_fullname_display}`}</span> 
+	  <span className="ApproversList-email">{` (${approver_email_display})`}</span>
+	</div>
 	{date_jsx}
+	{approved_listing_predicate? ticked_circle : unticked_circle}
       </div>
     );
   });
   
   return (
-    <>
-      <br/>{list_heading}<br/>
-    {approvers_accepted_list_jsx}
-    </>
-  );
-}
-function ApproversPending({approvers_pending}) {
-  return (
-    <>
-      <br/>Pending:<br/>
-      {approvers_pending.map(approver => approver.approver.first_name)}
-      {/* {JSON.stringify(approvers_pending)} */}
-    </>
+    <div className="ApproversList">
+      <span className="ApproversList-heading">{list_heading}</span>
+      {approvers_list_jsx}
+    </div>
   );
 }
 
@@ -197,14 +196,14 @@ function ApproverBox({ approvers }) {
   console.log("approvers", approvers);
   const approvers_approved = approvers.filter(approver => approver.status === "accepted");
   const approvers_pending = approvers.filter(approver => approver.status === "created");
+  const approvers_pending_start_index = approvers_approved.length + 1;
+  
   console.log("approvers_approved", approvers_approved);
   return (
     <div className="ApproverBox border0">
-      <b>ApproverBox</b>
-      <ApproversApproved approvers_approved={approvers_approved} list_heading={"Approved"} />
+      <ApproversList approvers_approved={approvers_approved} list_heading={"Approved"} start_index={1} />
       <hr className="ApproverBox-hr" />
-      {/* <ApproversPending approvers_pending={approvers_pending}/> */}
-      <ApproversApproved approvers_approved={approvers_pending} list_heading={"Pending"} />
+      <ApproversList approvers_approved={approvers_pending} list_heading={"Pending"} start_index={approvers_pending_start_index} />
     </div>
     
   );

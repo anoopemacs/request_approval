@@ -14,7 +14,15 @@ body {
 }
 
 .border0 {
-    //border: dashed 1px pink;
+    border: dashed 1px pink;
+}
+
+.AirbaseLogo-svg {
+    height: 24px;
+}
+
+.Security-image {
+    height: 12px;
 }
 
 .MainBox {
@@ -31,6 +39,11 @@ body {
 
 .MainBoxHeading {
     grid-column: 1 / -1;
+}
+
+.MainBoxHeading-image {
+    height: 32px;
+    width: 32px;
 }
 
 .RequesterBoxWrapper {
@@ -77,6 +90,9 @@ body {
 .RequesterBox-description {
     grid-column: 1 / -1;
 }
+.RequesterBox-profilepicture-image {
+    height: 24px;
+}
 
 .ApproverBox {
     grid-column: 2 / -1;
@@ -105,30 +121,50 @@ body {
     border-radius: 8px;
 }
 
-/*
-   .ApproveDeny-approve .ApproveDeny-deny {
-   position: absolute;
-   height: 17px;
-   left: 19.05%;
-   right: 20.24%;
-   top: calc(50% - 17px/2 + 0.5px);
-
-   font-family: SFProDisplay;
-   font-size: 14px;
-   line-height: 16px;
-   //identical to box height
-
-   color: #FFFFFF;
-   }
- */
 .multiusewarning {
     margin-left: 15px; /*16px on mobile*/
 }
-.Approvers-list-timecircle {
+
+/* grid on ApproversList item */
+.Approvers-list-item {
+    display: grid;
+    grid-template-columns: 24px 24px minmax(0, 1fr) 36px;
+    grid-template-rows: 17px 14px;
+}
+.Approvers-list-indexcircle {
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+}
+.ApproversList-profilepicture {
+    grid-column: 2 / 3;
+    grid-row: 1 / -1;
+    height: 24px;
+}
+.ApproversList-name-email {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+.ApproversList-date {
+    grid-column: 3 / 4;
+    grid-row: 2 / -1;
+}
+.ApproversList-statuscircle {
+    grid-column: 4 / 5;
+    grid-row: 1 / -1;
+}
+/* grid on ApproversList ends */
+
+.ApproversList {
+    margin-left: 16px;    
+}
+
+.Approvers-list-circle {
     width:20px;
     height:20px;
     border-radius:10px;
     font-size: 12px;
+}
+.Approvers-list-indexcircle {
     color:#222222;
     line-height: 14px;
     background: rgba(34, 34, 34, 0.1);
@@ -136,6 +172,64 @@ body {
     opacity: 0.5;
     display: inline-block;
 }
+.Approvers-list-tickedcircle {
+    color:#222222;
+    line-height: 14px;
+    background: #26C281;
+    text-align: center;
+    display: inline-block;
+}
+.Approvers-list-untickedcircle {
+    color: #FFFFFF;
+    line-height: 14px;
+    background: #FFFFFF;
+    border: 1px solid rgba(34, 34, 34, 0.1);
+
+    text-align: center;
+    display: inline-block;
+}
+.Approvers-list-tickedcircletext {
+    background: #FFFFFF;
+}
+
+.ApproversList-heading {
+    height: 14px;
+    
+    font-family: SFProDisplay;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: #222222;
+
+    mix-blend-mode: normal;
+    opacity: 0.5;
+}
+
+.ApproversList-fullname {
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+.ApproversList-email {
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+.ApproversList-name-email {
+    min-width: 0;
+}
+
+.ApproversList-date {
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.ApproversList-profilepicture-image {
+    height: 24px;
+}
+
 .ApproverBox-hr {
     border: 1px solid rgba(34, 34, 34, 0.05);
+    margin-left: 16px;
+    margin-right: 16px;
 }

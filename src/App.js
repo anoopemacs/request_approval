@@ -26,8 +26,10 @@
 //TOOD: should I replace date formatter with moment.js?
 //TOread: /* display: inline-block what specifically does this do?  how does it enable empty circle to not disappear*/
 import React from "react";
-import "./App.css";
+import { differenceInWeeks } from 'date-fns';
+import parse from 'date-fns/parse';
 
+import "./App.css";
 import json_data from "./request_data.json";
 
 function AirbaseLogo() {
@@ -131,9 +133,9 @@ function ApproversApproved({ approvers_approved, list_heading }) {
      } 
    */
   const format_date_string = (date_string) => {
-    const dt1   = date_string.substring(8,10);
-    const mon1  = date_string.substring(5,7);
-    const yr1   = date_string.substring(0,4);
+    const dd   = date_string.substring(8,10);
+    const mmm  = date_string.substring(5,7);
+    const yyyy   = date_string.substring(0,4);
 
     const months = {
       '01' : 'Jan',
@@ -149,16 +151,20 @@ function ApproversApproved({ approvers_approved, list_heading }) {
       '11' : 'Nov',
       '12' : 'Dec'
     }
-    return `${months[mon1]} ${dt1}, ${yr1}`;
+    return `${months[mmm]} ${dd}, ${yyyy}`;
   }
 
+  console.log(differenceInWeeks(new Date(2014, 6, 20),
+				new Date(2014, 6, 5)));
+  console.log(new Date());
+  
   
   const approvers_accepted_list_jsx = approvers_approved.map(approver => {
     const date_jsx = (list_heading === "Approved")?
 		     <span>{`Approved ${format_date_string(approver.last_updated_date)}`}</span> :
 		     <span>{`Last notified ${format_date_string(approver.last_notified_time)}`}</span>;
 
-    const pending_duration_in_weeks = (list_heading === "Approved")? "" : "6";
+    const pending_duration_in_weeks = (list_heading === "Approved")? "" : "99";
 
     return (
       <div key={approver.approver.email}>
@@ -172,7 +178,7 @@ function ApproversApproved({ approvers_approved, list_heading }) {
   return (
     <>
       <br/>{list_heading}<br/>
-      {approvers_accepted_list_jsx}
+    {approvers_accepted_list_jsx}
     </>
   );
 }
@@ -195,7 +201,7 @@ function ApproverBox({ approvers }) {
     <div className="ApproverBox border0">
       <b>ApproverBox</b>
       <ApproversApproved approvers_approved={approvers_approved} list_heading={"Approved"} />
-      <hr/>
+      <hr className="ApproverBox-hr" />
       {/* <ApproversPending approvers_pending={approvers_pending}/> */}
       <ApproversApproved approvers_approved={approvers_pending} list_heading={"Pending"} />
     </div>

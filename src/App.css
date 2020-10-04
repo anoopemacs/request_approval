@@ -1,8 +1,15 @@
 /* import fonts */
 @font-face {
     font-family: 'SFProDisplay';
-    src: local('SFProDisplay'), url(./fonts/SF-Pro-Display-Regular.otf) format('opentype');
+    src: local('SF Pro Display'), url(./fonts/SF-Pro-Display-Regular.otf) format('opentype');
 }
+
+@font-face {
+    font-family: 'SFProDisplay-bold';
+    src: local('SF Pro Display bold'), url(./fonts/SF-Pro-Display-Bold.otf) format('opentype');
+    font-weight: bold;
+}
+
 /* import fonts ends */
 
 html {
@@ -24,7 +31,7 @@ body {
 }
 
 .border0 {
-    border: dashed 1px pink;
+    //border: dashed 1px pink;
 }
 
 .AirbaseLogo {
@@ -99,6 +106,7 @@ body {
     margin-left: 12px;
     
     font-family: SFProDisplay;
+    font-weight: bold;
     font-size: 16px;
     line-height: 19px;
 
@@ -217,6 +225,7 @@ body {
     display: grid;
     grid-template-columns: 24px 24px minmax(0, 1fr) 36px;
     grid-template-rows: 17px 14px;
+    grid-gap: 3px;
 }
 .Approvers-list-indexcircle {
     grid-column: 1 / 2;
@@ -245,6 +254,10 @@ body {
     margin-left: 16px;    
 }
 
+.Approvers-list-item {
+    margin-top: 13px;
+}
+
 .Approvers-list-circle {
     width:20px;
     height:20px;
@@ -253,22 +266,25 @@ body {
 }
 .Approvers-list-indexcircle {
     color:#222222;
-    line-height: 14px;
+    line-height: 20px;
     background: rgba(34, 34, 34, 0.1);
     text-align: center;
     opacity: 0.5;
-    display: inline-block;
+    display: block;
+
+    font-family: SFProDisplay;
+    font-size: 12px;
 }
 .Approvers-list-tickedcircle {
     color:#222222;
-    line-height: 14px;
+    line-height: 20px;
     background: #26C281;
     text-align: center;
-    display: inline-block;
+    display: block;
 }
 .Approvers-list-untickedcircle {
     color: #FFFFFF;
-    line-height: 14px;
+    line-height: 20px;
     background: #FFFFFF;
     border: 1px solid rgba(34, 34, 34, 0.1);
 
@@ -280,6 +296,7 @@ body {
 }
 
 .ApproversList-heading {
+    margin-top: 17px;
     height: 14px;
     
     font-family: SFProDisplay;
@@ -294,11 +311,22 @@ body {
 
 .ApproversList-fullname {
     font-size: 14px;
-    margin-left: 8px;
+    margin-left: 5px;
+
+    font-family: SFProDisplay;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #222222;
 }
 
 .ApproversList-email {
+    font-family: SFProDisplay;
     font-size: 12px;
+    line-height: 14px;
+    color: #222222;
+    opacity: 0.5;
+
     margin-left: 4px;
 }
 
@@ -307,8 +335,13 @@ body {
 }
 
 .ApproversList-date {
+    font-family: SFProDisplay;
     font-size: 12px;
-    margin-left: 8px;
+    line-height: 14px;
+    color: #222222;
+    opacity: 0.5;
+
+    margin-left: 4px;
 }
 
 .ApproversList-profilepicture-image {

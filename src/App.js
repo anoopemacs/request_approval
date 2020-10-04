@@ -29,6 +29,7 @@
 //delate default logo bundles by Create react app into public folder
 //retina ready
 //TODO: why does it scroll for 744px height, is total width >744px due to bug in gridding by me?
+//test with longer 'description' etc in .json
 import React from "react";
 import "./App.css";
 import json_data from "./request_data.json";
@@ -50,7 +51,7 @@ function Security() {
       <img className="Security-image"
 	   src={securityLogo}
 	   alt={"secure lock logo"} />
-      <span className="Security-message-heading">Security Message: </span>
+      <span className="Security-message-heading">Security Message </span>
       <span className="Security-message-value">Could not identify security message from given json.</span>
     </div>
   );

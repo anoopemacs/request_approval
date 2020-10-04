@@ -28,6 +28,7 @@
 //font-family: SFProDisplay;
 //delate default logo bundles by Create react app into public folder
 //retina ready
+//TODO: why does it scroll for 744px height, is total width >744px due to bug in gridding by me?
 import React from "react";
 import "./App.css";
 import json_data from "./request_data.json";
@@ -67,32 +68,45 @@ function MainBoxHeading({ service, id }) {
   );
 }
 
+function RequesterBoxItem({ item_class_name, field_name, children, halfwidth = false }) {
+  const base_class_name = halfwidth? "RequesterBoxItemHalfwidth" : "RequesterBoxItem"
+  return (
+    <div className={`${base_class_name} ${item_class_name}`}>
+      <div className={`${base_class_name}-field_name`}>{field_name}</div>
+      <div className={`${base_class_name}-field_value`}>{children}</div>
+    </div>
+  );
+}
+
 function RequesterBox({ requested_by, renewal_frequency_in_months, description, expense_account, cost, files, service }) {
   return (
     <div className="RequesterBox border0">
-      <div className="RequesterBox-name">
-	Requested by:
+      <RequesterBoxItem item_class_name="RequesterBox-name" field_name="Requested by">
 	<img className="RequesterBox-profilepicture-image" src={requested_by.profile_picture} alt={requested_by.first_name + " profile picture"} />
 	{`${requested_by.first_name} ${requested_by.last_name}`}
-      </div>
-      <div className="RequesterBox-cost">
-	Cost: ${cost}
-      </div>
-      <div className="RequesterBox-freq">
-	Renewal Frequency: {renewal_frequency_in_months} {renewal_frequency_in_months > 1 ? "months" : "month"}
-      </div>
-      <div className="RequesterBox-annual">
-	Annual Cost: ${cost * 12}
-      </div>
-      <div className="RequesterBox-account">
-	Expense Account: {expense_account}
-      </div>
-      <div className="RequesterBox-file">
-	File: {files.map(file_url => file_url.substring(file_url.lastIndexOf('/') + 1))}
-      </div>
-      <div className="RequesterBox-description">
-	Description: {description}
-      </div>
+      </RequesterBoxItem>
+      <RequesterBoxItem item_class_name="RequesterBox-cost" field_name="Cost">
+	${cost}
+      </RequesterBoxItem>
+    <RequesterBoxItem item_class_name="RequesterBox-freq" field_name="Renewal Frequency" halfwidth={true}>
+      {renewal_frequency_in_months} {renewal_frequency_in_months > 1 ? "months" : "month"}
+    </RequesterBoxItem>
+    <RequesterBoxItem item_class_name="RequesterBox-annual" field_name="Annual Cost" halfwidth={true}>
+      ${cost * 12}
+    </RequesterBoxItem>
+    <RequesterBoxItem item_class_name="RequesterBox-account" field_name="Expense Account">
+      {expense_account}
+    </RequesterBoxItem>
+    <RequesterBoxItem item_class_name="RequesterBox-file" field_name="File">
+      {files.map(file_url => {
+	const file_name = file_url.substring(file_url.lastIndexOf('/') + 1);
+	const file_type = file_url.substring(file_url.lastIndexOf('.') + 1);
+	return (<div key={file_url}><span className={"fiv-viv fiv-icon-" + file_type}></span> {file_name}{" "}<br/></div>);
+      })}
+    </RequesterBoxItem>
+    <RequesterBoxItem item_class_name="RequesterBox-description" field_name="Description">
+      {description}
+    </RequesterBoxItem>
     </div>
   );
 }
@@ -166,7 +180,7 @@ function ApproversList({ approvers_approved, list_heading, start_index }) {
 				      approver_fullname : approver_fullname.substring(0, 12) + "..";
     
     const approver_email_display = (approver.approver.email.length <= 28)?
-				      approver.approver.email : approver.approver.email.substring(0, 26) + "..";
+				   approver.approver.email : approver.approver.email.substring(0, 26) + "..";
     
     return (
       <div className="Approvers-list-item" key={approver.approver.email}>
@@ -212,8 +226,8 @@ function ApproverBox({ approvers }) {
 function ApproveDeny() {
   return (
     <div className="ApproveDeny">
-      <button className="ApproveDeny-approve">Approve</button>
-      <button className="ApproveDeny-deny">Deny</button>
+      <button type="button" className="ApproveDeny-approve">Approve</button>
+      <button type="button" className="ApproveDeny-deny">Deny</button>
     </div>
   );
 }

@@ -10,11 +10,20 @@ body {
     text-align: left;
     max-width: 851px;
     margin: auto;
-    overflow-wrap: break-word;
+    //overflow-wrap: break-word;
+    display: grid;
+    grid-template-rows: 48px 49px 29px 478px 140px;
+    grid-template-columns: 1fr;
 }
 
 .border0 {
     border: dashed 1px pink;
+}
+
+.AirbaseLogo {
+    max-width: 851px;
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
 }
 
 .AirbaseLogo-svg {
@@ -25,9 +34,17 @@ body {
     height: 12px;
 }
 
+.Security {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+}
+
 .MainBox {
+    grid-column: 1 / -1;
+    grid-row: 4 / 5;
+    
     background-color: rgba(34, 34, 34, 0.05);
-    display:grid;
+    display: grid;
     grid-gap: 1px;
     grid-template-columns: 504px 346px;
     grid-template-rows: 60px auto;/* 56px  */
@@ -42,6 +59,7 @@ body {
 }
 
 .MainBoxHeading-image {
+    margin-left: 10px;
     height: 32px;
     width: 32px;
 }
@@ -56,7 +74,8 @@ body {
     display: grid;
     grid-gap: 1px;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 48px 41px 41px 45px 44px 72px;
+    //grid-template-rows: 48px 41px 41px 45px 44px 72px;
+    grid-template-rows: 48px 41px 41px 45px auto 72px;
 
     border: 1px solid rgba(34, 34, 34, 0.05);
     border-radius: 4px;
@@ -107,14 +126,23 @@ body {
 }
 .ApproveDeny {
     margin-left: 15px;
+    margin-top: 13px;
+    margin-bottom: 19px;
 }
 .ApproveDeny-approve {
+    height: 34px;
+    width: 84px;
+
     color: #FFFFFF;
     background: #26C281;
     border: 1px solid rgba(34, 34, 34, 0.1);
     border-radius: 8px;
 }
 .ApproveDeny-deny {
+    margin-left: 8px;
+    height: 34px;
+    width: 64px;
+
     color: #FFFFFF;
     background: #FF6448;
     border: 1px solid rgba(34, 34, 34, 0.1);
@@ -229,7 +257,43 @@ body {
 }
 
 .ApproverBox-hr {
-    border: 1px solid rgba(34, 34, 34, 0.05);
+    height: 1px;
+    background-color: rgba(34, 34, 34, 0.05);
+    border: none;
+    
     margin-left: 16px;
     margin-right: 16px;
+}
+
+.RequesterBoxItem, .RequesterBoxItemHalfwidth {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.RequesterBoxItem-field_name {
+    grid-row: 1 / -1;
+    grid-column: 1 / 2;
+}
+.RequesterBoxItem-field_value {
+    grid-row: 1 / -1;
+    grid-column: 2 / 4;
+}
+
+.RequesterBoxItemHalfwidth-field_name {
+    grid-row: 1 / -1;
+    grid-column: 1 / 3;
+}
+.RequesterBoxItemHalfwidth-field_value {
+    grid-row: 1 / -1;
+    grid-column: 3 / 4;
+}
+
+.ApproveDeny {
+
+}
+
+.ApproveDeny-approve {
+}
+.ApproveDeny-deny {
 }

@@ -80,7 +80,7 @@ body {
     display: grid;
     grid-gap: 1px;
     grid-template-columns: 504px 346px;
-    grid-template-rows: 60px auto;/* 56px  */
+    grid-template-rows: 60px auto;
 }
 
 .MainBox > div {
@@ -113,7 +113,7 @@ body {
     color: #222222;
 }
 
-.RequesterBoxWrapper {
+.RequesterBoxWithButtons {
     grid-column: 1 / 2;
     grid-row: 2 / -1;
 }
@@ -130,6 +130,7 @@ body {
     border-radius: 4px;
     margin-left: 16px;
     margin-right: 16px;
+    margin-top: 16px;
 
     filter: drop-shadow(0px 2px 4px rgba(34, 34, 34, 0.05));
 }
@@ -165,6 +166,14 @@ body {
 .ApproverBox {
     grid-column: 2 / -1;
     grid-row: 2 / -1;
+}
+
+/* vertically stack view, below width of 851px*/
+/*TODO*/
+/**/
+
+.multiusewarning {
+    margin-left: 15px; /*16px on mobile*/
 }
 
 .multiusewarning-message {
@@ -216,9 +225,7 @@ body {
     border-radius: 8px;
 }
 
-.multiusewarning {
-    margin-left: 15px; /*16px on mobile*/
-}
+
 
 /* grid on ApproversList item */
 .Approvers-list-item {
@@ -300,6 +307,7 @@ body {
     height: 14px;
     
     font-family: SFProDisplay;
+    font-weight: bold;
     font-size: 12px;
     line-height: 14px;
 
@@ -415,4 +423,7 @@ body {
 }
 .RequesterBox-fullname {
     margin-left: 8px;
+}
+.RequesterBox-filename {
+    margin-left: 9px;
 }

@@ -89,25 +89,30 @@ function RequesterBox({ requested_by, renewal_frequency_in_months, description, 
       <RequesterBoxItem item_class_name="RequesterBox-cost" field_name="Cost">
 	${cost}
       </RequesterBoxItem>
-    <RequesterBoxItem item_class_name="RequesterBox-freq" field_name="Renewal Frequency" halfwidth={true}>
-      {renewal_frequency_in_months} {renewal_frequency_in_months > 1 ? "months" : "month"}
-    </RequesterBoxItem>
-    <RequesterBoxItem item_class_name="RequesterBox-annual" field_name="Annual Cost" halfwidth={true}>
-      ${cost * 12}
-    </RequesterBoxItem>
-    <RequesterBoxItem item_class_name="RequesterBox-account" field_name="Expense Account">
-      {expense_account}
-    </RequesterBoxItem>
-    <RequesterBoxItem item_class_name="RequesterBox-file" field_name="File">
-      {files.map(file_url => {
-	const file_name = file_url.substring(file_url.lastIndexOf('/') + 1);
-	const file_type = file_url.substring(file_url.lastIndexOf('.') + 1);
-	return (<div key={file_url}><span className={"fiv-viv fiv-icon-" + file_type}></span> {file_name}{" "}<br/></div>);
-      })}
-    </RequesterBoxItem>
-    <RequesterBoxItem item_class_name="RequesterBox-description" field_name="Description">
-      {description}
-    </RequesterBoxItem>
+      <RequesterBoxItem item_class_name="RequesterBox-freq" field_name="Renewal Frequency" halfwidth={true}>
+	{renewal_frequency_in_months} {renewal_frequency_in_months > 1 ? "months" : "month"}
+      </RequesterBoxItem>
+      <RequesterBoxItem item_class_name="RequesterBox-annual" field_name="Annual Cost" halfwidth={true}>
+	${cost * 12}
+      </RequesterBoxItem>
+      <RequesterBoxItem item_class_name="RequesterBox-account" field_name="Expense Account">
+	{expense_account}
+      </RequesterBoxItem>
+      <RequesterBoxItem item_class_name="RequesterBox-file" field_name="File">
+	{files.map(file_url => {
+	  const file_name = file_url.substring(file_url.lastIndexOf('/') + 1);
+	  const file_type = file_url.substring(file_url.lastIndexOf('.') + 1);
+	  return (
+	    <div key={file_url}>
+	      <span className={"fiv-viv fiv-icon-" + file_type}></span>
+	      <span className="RequesterBox-filename">{file_name}</span>
+	    </div>
+	  );
+	})}
+      </RequesterBoxItem>
+      <RequesterBoxItem item_class_name="RequesterBox-description" field_name="Description">
+	{description}
+      </RequesterBoxItem>
     </div>
   );
 }

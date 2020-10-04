@@ -50,8 +50,8 @@ function Security() {
       <img className="Security-image"
 	   src={securityLogo}
 	   alt={"secure lock logo"} />
-      <span>Security Message: </span>
-      <span>Could not identify security message from given json.</span>
+      <span className="Security-message-heading">Security Message: </span>
+      <span className="Security-message-value">Could not identify security message from given json.</span>
     </div>
   );
 }
@@ -63,7 +63,7 @@ function MainBoxHeading({ service, id }) {
 	   src={service.logo}
 	   alt={service.name + " logo"}
       />
-      {`Request for ${service.name} (#${id})`}
+      <span className="MainBoxHeading-text">{`Request for ${service.name} (#${id})`}</span>
     </div>
   );
 }
@@ -83,7 +83,7 @@ function RequesterBox({ requested_by, renewal_frequency_in_months, description, 
     <div className="RequesterBox border0">
       <RequesterBoxItem item_class_name="RequesterBox-name" field_name="Requested by">
 	<img className="RequesterBox-profilepicture-image" src={requested_by.profile_picture} alt={requested_by.first_name + " profile picture"} />
-	{`${requested_by.first_name} ${requested_by.last_name}`}
+	<span className="RequesterBox-fullname">{`${requested_by.first_name} ${requested_by.last_name}`}</span>
       </RequesterBoxItem>
       <RequesterBoxItem item_class_name="RequesterBox-cost" field_name="Cost">
 	${cost}
@@ -226,8 +226,8 @@ function ApproverBox({ approvers }) {
 function ApproveDeny() {
   return (
     <div className="ApproveDeny">
-      <button type="button" className="ApproveDeny-approve">Approve</button>
-      <button type="button" className="ApproveDeny-deny">Deny</button>
+      <button type="button" className="ApproveDeny-approve-button">Approve</button>
+      <button type="button" className="ApproveDeny-deny-button">Deny</button>
     </div>
   );
 }

@@ -119,7 +119,7 @@ function RequesterBox({ requested_by, renewal_frequency_in_months, description, 
 
 function RequesterBoxWithWarningAndButtons({ requested_by, renewal_frequency_in_months, description, expense_account, cost, files, service }) {
   return (
-    <div className="RequesterBoxWithButtons">
+    <>
       <RequesterBox requested_by = {requested_by} renewal_frequency_in_months = {renewal_frequency_in_months} description = {description} expense_account = {expense_account}  cost = {cost}  files = {files} service={service} />      
       {(service.usage_count > 0)?
        <div className="multiusewarning">
@@ -129,7 +129,7 @@ function RequesterBoxWithWarningAndButtons({ requested_by, renewal_frequency_in_
       :
        ""}
       <ApproveDeny />
-    </div>
+    </>
   );
 }
 
@@ -247,11 +247,16 @@ function MainBox({ json_data }) {
   const {service, id, ...remaining3_json_data} = remaining2_json_data;
 
   return (
-    <div className="MainBox border0">
+    <>
       <MainBoxHeading service={service} id={id} />
       <RequesterBoxWithWarningAndButtons requested_by = {requested_by} renewal_frequency_in_months = {renewal_frequency_in_months} description = {description} expense_account = {expense_account}  cost = {cost}  files = {files} service={service} />      
       <ApproverBox approvers={approvers} />
-    </div>
+      
+      <div className="MainBox-background-white"></div>
+      <div className="MainBox-heading-underline"></div>
+      <div className="MainBox-AirbaseLogo-underline"></div>
+      <div className="MainBox-Approvers-multiusewarning-gap"></div>
+    </>
   );
 }
 

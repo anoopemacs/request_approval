@@ -11,7 +11,6 @@
 }
 
 /* import fonts ends */
-
 html {
     background-color: #F9FAFB;
 }
@@ -26,8 +25,15 @@ body {
     margin: auto;
     //overflow-wrap: break-word;
     display: grid;
-    grid-template-rows: 48px 49px 29px 478px 140px;
-    grid-template-columns: 1fr;
+    grid-template-rows: 49px 22px 22px 15px 16px 57px 1px 15px auto 15px 27px 14px 33px 18px 139px;
+    grid-template-columns: 504px 346px;
+}
+@media (max-width: 851px) {
+    .App {
+	display: grid;
+	grid-template-rows: 30px 25px 22px 1px 13px auto 25px 53px auto 86px 5px 255px 17px 34px 18px;
+	grid-template-columns: 1fr 1fr;
+    }
 }
 
 .border0 {
@@ -35,9 +41,23 @@ body {
 }
 
 .AirbaseLogo {
-    max-width: 851px;
     grid-column: 1 / -1;
     grid-row: 2 / 3;
+}
+@media (max-width: 851px) {
+    .AirbaseLogo {
+	grid-column: 1 / -1;
+	grid-row: 2 / 3;
+	margin-left: 16px;
+	margin-right: 16px;
+    }
+    .MainBox-AirbaseLogo-underline {
+	grid-column: 1 / -1;
+	grid-row: 4 / 5;
+	margin-left: 16px;
+	margin-right: 16px;
+	background-color: rgba(34, 34, 34, 0.05);
+    }
 }
 
 .AirbaseLogo-svg {
@@ -46,8 +66,17 @@ body {
 
 .Security {
     grid-column: 1 / -1;
-    grid-row: 3 / 4;
+    grid-row: 4 / 5;
 }
+@media (max-width: 851px) {
+    .Security {
+	grid-column: 1 / -1;
+	grid-row: 6 / 7;
+	margin-left: 16px;
+	margin-right: 16px;
+    }   
+}
+
 .Security-image {
     height: 12px;
 }
@@ -72,37 +101,53 @@ body {
     color: rgba(34, 34, 34, 0.5);
 }
 
-.MainBox {
+
+.MainBox-background-white {
     grid-column: 1 / -1;
-    grid-row: 4 / 5;
-    
-    background-color: rgba(34, 34, 34, 0.05);
-    display: grid;
-    grid-gap: 1px;
-    grid-template-columns: 504px 346px;
-    grid-template-rows: 60px auto;
+    grid-row: 6 / 15;
+    border-radius: 8px;
+    background: #FFFFFF;
+    z-index: -1;
 }
 
-.MainBox > div {
-    background-color: white;
+@media (max-width: 851px) {
+    .MainBox-background-white {
+	grid-column: 1 / -1;
+	grid-row: 8 / 13;
+	border-radius: 8px;
+	background: #FFFFFF;
+	z-index: -1;
+    }
 }
-
 .MainBoxHeading {
     grid-column: 1 / -1;
+    grid-row: 6 / 7;
     display: flex;
     align-items: center;
+}
+@media (max-width: 851px) {
+    .MainBoxHeading {
+	grid-column: 1 / -1;
+	grid-row: 8 / 9;
+    }
+}
+
+@media (min-width: 852px) {
+    .MainBox-heading-underline {
+	grid-column: 1 / -1;
+	grid-row: 7 / 8;
+	background: rgba(34, 34, 34, 0.05);
+    }
 }
 
 .MainBoxHeading-image {
     margin-left: 16px;
-    margin-top: 16px;
     
     height: 32px;
     width: 32px;
 }
 .MainBoxHeading-text {
     height: 19px;
-    margin-top: 21px;
     margin-left: 12px;
     
     font-family: SFProDisplay;
@@ -113,12 +158,10 @@ body {
     color: #222222;
 }
 
-.RequesterBoxWithButtons {
-    grid-column: 1 / 2;
-    grid-row: 2 / -1;
-}
-
 .RequesterBox {
+    grid-column: 1 / 2;
+    grid-row: 9 / 10;
+    
     background-color: rgba(34, 34, 34, 0.05);
     display: grid;
     grid-gap: 1px;
@@ -130,9 +173,15 @@ body {
     border-radius: 4px;
     margin-left: 16px;
     margin-right: 16px;
-    margin-top: 16px;
 
     filter: drop-shadow(0px 2px 4px rgba(34, 34, 34, 0.05));
+}
+@media (max-width: 851px) {
+    .RequesterBox {
+	grid-column: 1 / -1;
+	grid-row: 9 / 10;
+	grid-template-rows: 48px 41px auto 45px 0px 72px;
+    }    
 }
 
 .RequesterBox > div {
@@ -156,6 +205,12 @@ body {
 .RequesterBox-file {
     grid-column: 1 / -1;
 }
+@media (max-width: 851px) {
+    .RequesterBox-file {
+	visibility: hidden;
+    }
+}
+
 .RequesterBox-description {
     grid-column: 1 / -1;
 }
@@ -165,7 +220,15 @@ body {
 
 .ApproverBox {
     grid-column: 2 / -1;
-    grid-row: 2 / -1;
+    grid-row: 8 / 15;
+    border-left: 1px solid rgba(34, 34, 34, 0.05);
+}
+@media (max-width: 851px) {
+    .ApproverBox {
+	grid-column: 1 / -1;
+	grid-row: 12 / 13;
+	border-left: none;
+    }
 }
 
 /* vertically stack view, below width of 851px*/
@@ -173,7 +236,20 @@ body {
 /**/
 
 .multiusewarning {
+    grid-column: 1 / 2;
+    grid-row: 11 / 12;
     margin-left: 15px; /*16px on mobile*/
+}
+@media (max-width: 851px) {
+    .multiusewarning {
+	grid-column: 1 / -1;
+	grid-row: 10 / 11;
+    }
+    .MainBox-Approvers-multiusewarning-gap {
+	grid-column: 1 / -1;
+	grid-row: 11 / 12;
+	background-color: #F9FAFB;
+    }
 }
 
 .multiusewarning-message {
@@ -192,9 +268,16 @@ body {
     opacity: 0.5;
 }
 .ApproveDeny {
+    grid-column: 1 / 2;
+    grid-row: 13 / 14;
+    
     margin-left: 15px;
-    margin-top: 13px;
-    margin-bottom: 19px;
+}
+@media (max-width: 851px) {
+    .ApproveDeny {
+	grid-column: 1 / -1;
+	grid-row: 14 / 15;
+    }
 }
 
 .ApproveDeny-approve-button {
@@ -202,8 +285,6 @@ body {
     font-size: 14px;
     line-height: 16px;
 
-    height: 34px;
-    width: 84px;
 
     color: #FFFFFF;
     background: #26C281;
@@ -216,8 +297,6 @@ body {
     line-height: 16px;
 
     margin-left: 8px;
-    height: 34px;
-    width: 64px;
 
     color: #FFFFFF;
     background: #FF6448;
@@ -225,7 +304,29 @@ body {
     border-radius: 8px;
 }
 
+@media (min-width: 852px) {
+    .ApproveDeny-approve-button {
+	height: 34px;
+	width: 84px;
+    }
+    .ApproveDeny-deny-button {
+	height: 34px;
+	width: 64px;
+    }    
+}
 
+@media (max-width: 851px) {
+    .ApproveDeny-approve-button {
+	grid-column: 1 / 2;
+	width: 45%;
+	height: 36px;
+    }
+    .ApproveDeny-deny-button {
+	grid-column: 2 / 3;
+	width: 45%;
+	height: 36px;
+    }
+}
 
 /* grid on ApproversList item */
 .Approvers-list-item {
@@ -365,9 +466,14 @@ body {
     margin-right: 16px;
 }
 
-.RequesterBoxItem, .RequesterBoxItemHalfwidth {
+.RequesterBoxItem {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+.RequesterBoxItemHalfwidth {
+    display: grid;
+    grid-template-columns: repeat(1fr, 6);
     grid-template-rows: 1fr;
 }
 
@@ -395,7 +501,7 @@ body {
 
 .RequesterBoxItemHalfwidth-field_name {
     grid-row: 1 / -1;
-    grid-column: 1 / 3;
+    grid-column: 1 / 6;
 
     font-family: SFProDisplay;
     font-size: 14px;
@@ -406,7 +512,7 @@ body {
 }
 .RequesterBoxItemHalfwidth-field_value {
     grid-row: 1 / -1;
-    grid-column: 3 / 4;
+    grid-column: 6 / 7;
 
     font-family: SFProDisplay;
     font-size: 14px;
@@ -414,6 +520,7 @@ body {
 
     color: #222222;    
 }
+
 .RequesterBox-description > .RequesterBoxItem-field_name, .RequesterBox-description > .RequesterBoxItem-field_value {
     line-height: 20px;
 }

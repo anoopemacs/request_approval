@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Built with:-
+Create React App
+npm v12 latest lts as of Oct 4th, 2020
 
-## Available Scripts
+# Remaining tasks:-
 
-In the project directory, you can run:
+TODO: Keep it blind accessible
 
-### `yarn start`
+TODO: use propTypes to solidify json format, requires npm i prop-types
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+TODO: Approve button should warn if asked amount exceeds budget in json
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+TODO: diagram 1: component names drawn on top of the design diagram
 
-### `yarn test`
+TODO: diagram 2: which component owns which piece of json data
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+TODO: include a library that shows logo of attached files, eg: .xls logo in design doc
 
-### `yarn build`
+TODO: if approvers_accepted + approvers_pending != approvers, then raise an unhandled approver_status exception.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+TODO: mention npm, React version in readme
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+TODO: a picture showning the assumptions made by me
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+TODO: test for the case of 0 pending approvers or 0 approved approvers
 
-### `yarn eject`
+TODO: change all unnecessary 'let' to 'const'
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+TODO: change formatting of ({approvers_accepted}) to ({ approvers_accepted }) & other such formatting best practises
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+TODO: month v/s months v/s year v/s years
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+TODO: Approve should warn if request exceeds monthly spend limit
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+TODO: Security 'lock logo' add from external library, fontawesome?
 
-## Learn More
+TODO: convert requester box to <table>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+TODO: test on Internet explorer, Edge, other operating systems on Browserstack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+TODO: attach and use appropriate fonts
 
-### Code Splitting
+TODO: explain hack used to fill css grid borders
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+TODO: show css calculations more explicitly: top: calc(50% - 17px/2 + 0.5px);
 
-### Analyzing the Bundle Size
+TODO: I think in design, drop shadow is only there to the bottom.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+TODO: add to assumptions:      "last_updated_date" is the time that Approved signal was sent
 
-### Making a Progressive Web App
+TODO: underscore vs camelcase follow convention & add it to readme
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+TODO: single quote, double quote formatting
 
-### Advanced Configuration
+TOOD: should I replace date formatter with moment.js?
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+TOread: /* display: inline-block what specifically does this do?  how does it enable empty circle to not disappear*/
 
-### Deployment
+Assumption made: approvers are presented in the same order as they appear in the array from json data
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+font-family: SFProDisplay;
 
-### `yarn build` fails to minify
+delate default logo bundles by Create react app into public folder
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+retina ready
+
+TODO: why does it scroll for 744px height, is total width >744px due to bug in gridding by me?
+
+test with longer 'description' etc in .json

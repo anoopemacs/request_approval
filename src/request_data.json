@@ -47,19 +47,6 @@
       "last_notified_time": "2018-05-07T10:47:13.661571",
       "created_date": "2018-05-07T10:45:42.630981",
       "last_updated_date": "2018-05-07T10:47:13.690153"
-    },
-    {
-      "approver": {
-        "email": "thejo2@airbase.io",
-        "first_name": "Thejo",
-        "last_name": "Kote",
-        "profile_picture":
-          "https://lh5.googleusercontent.com/-gIEfrbWr0QY/AAAAAAAAAAI/AAAAAAAAAAo/HHihoSxWy9c/photo.jpg"
-      },
-      "status": "created",
-      "last_notified_time": "2018-05-07T10:47:13.661571",
-      "created_date": "2018-05-07T10:45:42.630981",
-      "last_updated_date": "2018-05-07T10:47:13.690153"
     }
   ],
   "description": "This is a request to pay for our monthly Github expenses",
@@ -70,9 +57,6 @@
   "cost": 400,
   "spend_limit": 1500,
   "files": [
-    "https://staging-airbase.s3.amazonaws.com/company_38dd77/subscription_155/eclipse.jpg",
-    "https://staging-airbase.s3.amazonaws.com/company_38dd77/subscription_155/eclipse1.jpg",
-    "https://staging-airbase.s3.amazonaws.com/company_38dd77/subscription_155/eclipse2.jpg",
-    "https://staging-airbase.s3.amazonaws.com/company_38dd77/subscription_155/eclipse3.jpg"
+    "https://staging-airbase.s3.amazonaws.com/company_38dd77/subscription_155/eclipse.jpg"
   ]
 }
